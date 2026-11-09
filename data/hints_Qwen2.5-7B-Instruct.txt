@@ -1,0 +1,6 @@
+Practice results per question type (accuracy %, tokens):
+is there an edge between two nodes: politician (90%, 396), adjacency (85%, 396)
+degree of a node: incident (80%, 361), expert (50%, 199)
+how many nodes: expert (80%, 228), adjacency (70%, 329)
+list the nodes connected to a node: incident (100%, 477), adjacency (50%, 373)
+is there a cycle: got (75%, 256), expert (70%, 167)

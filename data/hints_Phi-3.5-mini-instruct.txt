@@ -1,0 +1,6 @@
+Practice results per question type (accuracy %, tokens):
+is there an edge between two nodes: adjacency (75%, 403), friendship (75%, 475)
+degree of a node: incident (75%, 374), expert (45%, 204)
+how many nodes: friendship (45%, 381), coauthorship (45%, 463)
+list the nodes connected to a node: incident (75%, 492), social (45%, 446)
+is there a cycle: expert (90%, 172), adjacency (75%, 249)

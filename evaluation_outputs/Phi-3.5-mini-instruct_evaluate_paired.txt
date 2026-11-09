@@ -1,0 +1,68 @@
+questions with all 9 encodings: 500 of 500
+task-aware lookup picks: {'cycle_check': 'expert', 'node_count': 'friendship', 'connected_nodes': 'incident', 'edge_existence': 'expert', 'node_degree': 'incident'}
+cv5 lookup picks per task (fold counts): {'cycle_check': {'expert': 5}, 'node_count': {'coauthorship': 5}, 'connected_nodes': {'incident': 5}, 'edge_existence': {'expert': 5}, 'node_degree': {'incident': 4, 'expert': 1}}
+planner:Phi-3.5-mini-instruct_planner_balanced: parsed ok 499/500 (fallback 'incident' used 1x); choice counts {'adjacency': 435, 'incident': 23, 'social': 42}
+planner:Phi-3.5-mini-instruct_planner_cost: parsed ok 498/500 (fallback 'incident' used 2x); choice counts {'adjacency': 327, 'incident': 104, 'social': 69}
+planner:Phi-3.5-mini-instruct_planner_shuffled: parsed ok 465/500 (fallback 'incident' used 35x); choice counts {'adjacency': 390, 'friendship': 3, 'expert': 2, 'incident': 101, 'got': 1, 'coauthorship': 3}
+planner:Phi-3.5-mini-instruct_planner_hinted: parsed ok 500/500 (fallback 'incident' used 0x); choice counts {'adjacency': 100, 'incident': 200, 'friendship': 100, 'expert': 100}
+planner:Phi-3.5-mini-instruct_planner_hinted_cv: parsed ok 500/500 (fallback 'incident' used 0x); choice counts {'adjacency': 76, 'expert': 104, 'friendship': 20, 'incident': 200, 'coauthorship': 100}
+
+strategy                                        n   acc%        95% CI     in    in*  total    sec
+fixed:adjacency                               500   49.4  [45.2, 54.0]    333    333    341   0.46
+fixed:coauthorship                            500   49.4  [45.0, 53.8]    463    463    476   0.74
+fixed:expert                                  500   59.2  [55.0, 63.4]    232    232    240   0.38
+fixed:friendship                              500   45.8  [41.6, 50.2]    381    381    394   0.62
+fixed:got                                     500   42.8  [38.2, 47.4]    403    403    417   0.66
+fixed:incident                                500   57.6  [53.4, 61.6]    436    436    445   0.62
+fixed:politician                              500   50.2  [45.8, 54.6]    409    409    422   0.63
+fixed:social                                  500   50.8  [46.2, 55.6]    382    382    392   0.60
+fixed:sp                                      500   42.8  [38.6, 47.2]    381    381    394   0.62
+always_incident                               500   57.6  [53.6, 61.8]    436    436    445   0.62
+random_per_query                              500   49.8  [46.2, 53.1]    380    380    391   0.59
+always_shortest_prompt                        500   55.0  [50.6, 59.6]    232    232    239   0.39
+oracle_cheapest_correct                       500   87.8  [84.8, 90.8]    289    289    298   0.47
+task_aware_lookup                             500   72.0  [68.2, 75.8]    357    357    368   0.55
+task_aware_lookup_cv5                         500   72.0  [67.8, 76.0]    367    367    377   0.56
+planner:Phi-3.5-mini-instruct_planner_balanced  500   46.4  [42.2, 50.6]    558    383    572   0.62
+planner:Phi-3.5-mini-instruct_planner_cost    500   52.0  [47.8, 56.4]    599    398    612   0.69
+planner:Phi-3.5-mini-instruct_planner_shuffled  500   50.8  [46.6, 55.0]    575    400    587   0.62
+planner:Phi-3.5-mini-instruct_planner_hinted  500   71.2  [67.2, 75.4]    755    423    767   0.75
+planner:Phi-3.5-mini-instruct_planner_hinted_cv  500   73.0  [69.4, 77.2]    772    442    784   0.76
+
+per-task accuracy (%):
+strategy                                     connected_n cycle_check edge_existe  node_count node_degree
+fixed:adjacency                                     23.0        89.0        73.0        33.0        29.0
+fixed:coauthorship                                  20.0        61.0        77.0        70.0        19.0
+fixed:expert                                        29.0        88.0        77.0        58.0        44.0
+fixed:friendship                                    17.0        56.0        76.0        62.0        18.0
+fixed:got                                           16.0        57.0        74.0        47.0        20.0
+fixed:incident                                      77.0        52.0        75.0        28.0        56.0
+fixed:politician                                    19.0        68.0        79.0        55.0        30.0
+fixed:social                                        20.0        68.0        78.0        60.0        28.0
+fixed:sp                                            18.0        58.0        73.0        47.0        18.0
+always_incident                                     77.0        52.0        75.0        28.0        56.0
+random_per_query                                    26.6        66.3        75.8        51.1        29.1
+always_shortest_prompt                              27.0        73.0        78.0        58.0        39.0
+oracle_cheapest_correct                             78.0        92.0        95.0        90.0        84.0
+task_aware_lookup                                   77.0        88.0        77.0        62.0        56.0
+task_aware_lookup_cv5                               77.0        88.0        77.0        70.0        48.0
+planner:Phi-3.5-mini-instruct_planner_balanced        27.0        70.0        73.0        33.0        29.0
+planner:Phi-3.5-mini-instruct_planner_cost          66.0        59.0        73.0        33.0        29.0
+planner:Phi-3.5-mini-instruct_planner_shuffled        34.0        81.0        72.0        32.0        35.0
+planner:Phi-3.5-mini-instruct_planner_hinted        77.0        88.0        73.0        62.0        56.0
+planner:Phi-3.5-mini-instruct_planner_hinted_cv        77.0        88.0        74.0        70.0        56.0
+
+paired comparison (A minus B, accuracy points on the same questions; best single wording picked on the test set = fixed:expert, which favours the baseline)
+A                                             B                            diff          95% CI  A only  B only  p (sign)
+task_aware_lookup_cv5                         always_incident              14.4  [ 10.4, 18.4]      95      23    0.0000
+task_aware_lookup_cv5                         fixed:expert                 12.8  [  9.0, 16.6]      85      21    0.0000
+planner:Phi-3.5-mini-instruct_planner_hinted  task_aware_lookup_cv5        -0.8  [ -3.6,  2.2]      26      30    0.6889
+planner:Phi-3.5-mini-instruct_planner_hinted_cvtask_aware_lookup_cv5         1.0  [ -0.8,  2.8]      14       9    0.4049
+planner:Phi-3.5-mini-instruct_planner_hinted  always_incident              13.6  [ 10.2, 17.2]      80      12    0.0000
+planner:Phi-3.5-mini-instruct_planner_hinted_cvalways_incident              15.4  [ 11.8, 19.2]      90      13    0.0000
+task_aware_lookup                             always_incident              14.4  [ 10.8, 18.2]      84      12    0.0000
+task_aware_lookup                             fixed:expert                 12.8  [  8.6, 17.0]      88      24    0.0000
+planner:Phi-3.5-mini-instruct_planner_hinted  task_aware_lookup            -0.8  [ -2.4,  0.8]       6      10    0.4545
+planner:Phi-3.5-mini-instruct_planner_balancedalways_incident             -11.2  [-15.4, -6.8]      41      97    0.0000
+planner:Phi-3.5-mini-instruct_planner_cost    always_incident              -5.6  [ -9.0, -2.0]      27      55    0.0026
+planner:Phi-3.5-mini-instruct_planner_shuffledalways_incident              -6.8  [-11.0, -2.4]      48      82    0.0036

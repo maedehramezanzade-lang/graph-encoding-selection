@@ -1,0 +1,16 @@
+Colab runtime checked on 7 November 2026 (Tesla T4)
+python 3.13.16 Linux-6.6.159+-x86_64-with-glibc2.39
+torch 2.14.1+cu130
+transformers 5.22.1
+accelerate 1.15.0
+bitsandbytes 0.50.2 (installed on 7 Nov 2026 with: pip install -U "bitsandbytes>=0.46.1", as in the experiment setup cell)
+networkx 3.7
+numpy 2.4.6
+tokenizers 0.23.3
+cuda 13.0 | gpu Tesla T4
+
+python3 src/verify_hints.py (token counts of rebuilt planner prompts vs stored plan_in_tokens)
+Qwen2.5-7B-Instruct hinted: 500/500
+Qwen2.5-7B-Instruct hinted_cv: 500/500
+Phi-3.5-mini-instruct hinted: 500/500
+Phi-3.5-mini-instruct hinted_cv: 500/500

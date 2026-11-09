@@ -1,0 +1,42 @@
+== Phi-3.5-mini-instruct: 1. hint following (choice named in the hints for that task)
+hinted: overall 500/500 followed
+   connected_nodes  100/100  choices {'incident': 100}
+   cycle_check      100/100  choices {'expert': 100}
+   edge_existence   100/100  choices {'adjacency': 100}
+   node_count       100/100  choices {'friendship': 100}
+   node_degree      100/100  choices {'incident': 100}
+hinted_cv: overall 454/500 followed
+   connected_nodes  100/100  choices {'incident': 100}
+   cycle_check      100/100  choices {'expert': 70, 'adjacency': 30}
+   edge_existence   54/100  choices {'adjacency': 46, 'expert': 34, 'friendship': 20}
+   node_count       100/100  choices {'coauthorship': 100}
+   node_degree      100/100  choices {'incident': 100}
+== 2. accuracy (%) by graph size tercile within task (rows: encoding with best accuracy in each tercile; sizes = n_nodes ranges)
+   connected_nodes:
+      nodes 5-10: incident 94% (incident 94, adjacency 42, expert 48)
+      nodes 10-15: incident 82% (incident 82, adjacency 21, expert 24)
+      nodes 15-20: incident 56% (incident 56, adjacency 6, expert 15)
+   cycle_check:
+      nodes 5-8: expert 97% (incident 36, adjacency 94, expert 97)
+      nodes 9-14: expert 94% (incident 64, adjacency 91, expert 94)
+      nodes 14-20: adjacency 82% (incident 56, adjacency 82, expert 74)
+   edge_existence:
+      nodes 5-9: coauthorship 76% (incident 73, adjacency 64, expert 67)
+      nodes 9-15: got 88% (incident 79, adjacency 76, expert 88)
+      nodes 15-20: sp 82% (incident 74, adjacency 79, expert 76)
+   node_count:
+      nodes 5-9: friendship 100% (incident 82, adjacency 91, expert 100)
+      nodes 10-15: friendship 70% (incident 0, adjacency 6, expert 33)
+      nodes 15-20: coauthorship 53% (incident 3, adjacency 3, expert 41)
+   node_degree:
+      nodes 5-11: incident 76% (incident 76, adjacency 42, expert 61)
+      nodes 11-16: incident 61% (incident 61, adjacency 24, expert 42)
+      nodes 16-20: incident 32% (incident 32, adjacency 21, expert 29)
+== 3. chance level (most frequent correct answer)
+   connected_nodes  most frequent answer [0, 2] = 2%
+   cycle_check      most frequent answer "yes" = 51%
+   edge_existence   most frequent answer "no" = 53%
+   node_count       most frequent answer 8 = 10%
+   node_degree      most frequent answer 0 = 13%
+== 4. test-set label balance: edge_existence yes = 47 / 100; cycle_check yes = 51 / 100
+   cycle_check mean edges: no-cycle graphs 4.5, cycle graphs 40.5
